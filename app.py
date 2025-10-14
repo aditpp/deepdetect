@@ -28,7 +28,7 @@ with st.sidebar:
 # ====== LOAD MODEL ======
 @st.cache_resource
 def load_model():
-    model = tf.keras.models.load_model("deepdetect_model.h5")
+    model = tf.keras.models.load_model("deepdetect_model_fix.h5")
     return model
 
 model = load_model()
