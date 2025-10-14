@@ -8,6 +8,18 @@ import pandas as pd
 import os
 import io
 
+from tensorflow.keras.preprocessing import image
+import numpy as np
+from PIL import Image
+
+def preprocess_image(uploaded_file):
+    img = Image.open(uploaded_file).convert("RGB")
+    img = img.resize((224, 224))  # ganti sesuai ukuran input model
+    img_array = np.array(img) / 255.0
+    img_array = np.expand_dims(img_array, axis=0)  # (1, 224, 224, 3)
+    return img_array
+
+
 # ====== CONFIGURASI DASAR ======
 st.set_page_config(page_title="DeepDetect Dashboard", page_icon="🧠", layout="wide")
 
